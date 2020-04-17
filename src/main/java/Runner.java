@@ -38,11 +38,12 @@ public class Runner {
         boolean itsFirstMessage = true;
 
         while (!in.hasNext("exit")){
+
+
+            ProducerRecord producerRecord = new ProducerRecord(topicName, "name", in.nextLine());
             if (itsFirstMessage == false){
                 System.out.println("Please, enter your message, or enter \"exit\" for exit");
             }
-
-            ProducerRecord producerRecord = new ProducerRecord(topicName, "name", in.nextLine());
             kafkaProducer.send(producerRecord);
 
 
